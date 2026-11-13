@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ThingTracker" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/ic_launcher_background</item>
+    </style>
+
+    <style name="Theme.ThingTracker.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#030712</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/thing_tracker_2</item>
+        <item name="postSplashScreenTheme">@style/Theme.ThingTracker</item>
+    </style>
+</resources>
