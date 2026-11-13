@@ -19,6 +19,9 @@
     <string name="label_category">Kategoria</string>
     <string name="label_notes">Muistiinpanot / Tiedot (Valinnainen)</string>
     <string name="label_add_photo">Lisää kuva (Valinnainen)</string>
+    <string name="dialog_photo_source_title">Valitse kuvalähde</string>
+    <string name="btn_take_photo">Ota uusi kuva (Kamera)</string>
+    <string name="btn_pick_gallery">Valitse galleriasta</string>
     <string name="btn_save">Tallenna esine</string>
     <string name="due_in_days">Erääntyy %d päivän päästä</string>
     <string name="due_today">Erääntyy tänään</string>
@@ -43,10 +46,26 @@
     <string name="badge_returned">Palautettu</string>
     <string name="dialog_language_title">Valitse kieli</string>
     <string name="lang_system_default">Järjestelmän oletus (Automaattinen)</string>
+    <string name="lang_cs">Tšekki</string>
+    <string name="lang_da">Tanska</string>
+    <string name="lang_de">Saksa</string>
+    <string name="lang_en">Englanti</string>
+    <string name="lang_es">Espanja</string>
+    <string name="lang_fi">Suomi</string>
+    <string name="lang_fr">Ranska</string>
+    <string name="lang_it">Italia</string>
+    <string name="lang_nl">Hollanti</string>
+    <string name="lang_no">Norja</string>
+    <string name="lang_pl">Puola</string>
+    <string name="lang_pt">Portugali</string>
+    <string name="lang_ro">Romania</string>
+    <string name="lang_sl">Sloenia</string>
+    <string name="lang_sv">Ruotsi</string>
     <string name="dialog_exit_title">Sulje sovellus</string>
     <string name="dialog_exit_message">Haluatko varmasti sulkea sovelluksen?</string>
     <string name="privacy_title">Käyttöehdot ja tietosuojakäytäntö</string>
     <string name="privacy_body">Viimeksi päivitetty: Lokakuu 2026\n\nSovellus: ThingTracker\nKehittäjä: N3looG\n\nTämä asiakirja säätelee ThingTracker-mobiilisovelluksen käyttöä. Lataamalla tai käyttämällä sovellusta hyväksyt nämä ehdot.\n\n1. Käyttö \u0027As-Is\': Sovellus tarjotaan ilmaiseksi ilman takuita.\n\n2. 100%% Paikallinen tallennus: Kaikki tiedot tallennetaan yksinomaan laitteellesi (Room DB). Poistaminen poistaa tiedot pysyvästi.\n\n3. Tietosuoja &amp; AdMob: Emme kerää henkilötietoja. Sovellus integroi Google AdMobin mainontaa varten.\n\n4. Luvat: Ilmoituksia käytetään vain paikallisiin muistutuksiin.\n\n5. Immateriaalioikeudet: Suunnittelu ja tavaramerkki kuuluvat N3looG:lle.</string>
     <string name="manual_title">Käyttöopas</string>
     <string name="manual_body">Tervetuloa ThingTracketin pariin!\n\n1. Lisää esine:\nNapauta vihreää \u0027+\u0027 painiketta.\n\n2. Haku:\nKäytä hakupalkkia.\n\n3. Pikapuhelu:\nNapauta puhelinkuvaketta.\n\n4. Palautus &amp; Poisto:\nKäytä merkkiä tai roska-astiaa.\n\n5. Asetukset:\nKäytä yläpalkin kuvakkeita.</string>
+    <string name="placeholder_search">Etsi esinettä tai henkilöä&#8230;</string>
 </resources>

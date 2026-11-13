@@ -19,6 +19,9 @@
     <string name="label_category">Kategori</string>
     <string name="label_notes">Anteckningar / Detaljer (Valfritt)</string>
     <string name="label_add_photo">Lägg till foto (Valfritt)</string>
+    <string name="dialog_photo_source_title">Välj fotokälla</string>
+    <string name="btn_take_photo">Ta nytt foto (Kamera)</string>
+    <string name="btn_pick_gallery">Välj från galleri</string>
     <string name="btn_save">Spara föremål</string>
     <string name="due_in_days">Förfaller om %d dagar</string>
     <string name="due_today">Förfaller idag</string>
@@ -43,10 +46,26 @@
     <string name="badge_returned">Återlämnad</string>
     <string name="dialog_language_title">Välj språk</string>
     <string name="lang_system_default">Systemstandard (Automatiskt)</string>
+    <string name="lang_cs">Tjeckiska</string>
+    <string name="lang_da">Danska</string>
+    <string name="lang_de">Tyska</string>
+    <string name="lang_en">Engelska</string>
+    <string name="lang_es">Spanska</string>
+    <string name="lang_fi">Finska</string>
+    <string name="lang_fr">Franska</string>
+    <string name="lang_it">Italienska</string>
+    <string name="lang_nl">Nederländska</string>
+    <string name="lang_no">Norska</string>
+    <string name="lang_pl">Polska</string>
+    <string name="lang_pt">Portugisiska</string>
+    <string name="lang_ro">Rumänska</string>
+    <string name="lang_sl">Slovenska</string>
+    <string name="lang_sv">Svenska</string>
     <string name="dialog_exit_title">Avsluta appen</string>
     <string name="dialog_exit_message">Är du säker på att du vill avsluta appen?</string>
     <string name="privacy_title">Användarvillkor och sekretesspolicy</string>
     <string name="privacy_body">Senast uppdaterad: Oktober 2026\n\nApp: ThingTracker\nUtvecklare: N3looG\n\nDetta dokument reglerar användningen av mobilapplikationen ThingTracker. Genom att ladda ner eller använda appen godkänner du dessa villkor.\n\n1. Användning \u0027As-Is\': Appen tillhandahålls gratis utan garantier.\n\n2. 100%% lokal lagring: Alla data sparas exklusivt på din enhet (Room DB). Avinstallation leder till permanent dataförlust.\n\n3. Sekretess &amp; AdMob: Vi samlar inte in personuppgifter. Appen integrerar Google AdMob för annonsering.\n\n4. Behorigheter: Notiser används enbart för lokala påminnelser.\n\n5. Immateriella rättigheter: Design och varumärke tillhör N3looG.</string>
     <string name="manual_title">Användarhandbok</string>
-    <string name="manual_body">Välkommen till ThingTracker!\n\n1. Lägg till föremål:\nTryck på den gröna \u0027+\u0027 knappen.\n\n2. Sök:\nAnvänd sökfältet.\n\n3. Snabbuppringning:\nTryck på telefonikonen.\n\n4. Återlämning &amp; Borttagning:\nAnvänd bocken eller papperskorgen.\n\n5. Inställningar:\nAnvänd ikonerna i menyraden.</string>
+    <string name="manual_body">Välkommen till ThingTracker!\n\n1. Lägg till föremål:\nTryck på den gröna \u0027+\u0027 knappen.\n\n2. Sök:\nAnvänd sökfältet.\n\n3. Snabbuppringning:\nTryck på telefonikonet.\n\n4. Återlämning &amp; Borttagning:\nAnvänd bocken eller papperskorgen.\n\n5. Inställningar:\nAnvänd ikonerna i menyraden.</string>
+    <string name="placeholder_search">Sök föremål eller person&#8230;</string>
 </resources>
