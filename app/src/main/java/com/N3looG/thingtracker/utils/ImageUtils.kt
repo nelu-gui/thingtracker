@@ -4,30 +4,31 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import androidx.core.graphics.scale
 import java.io.File
 import java.io.FileOutputStream
 
 object ImageUtils {
     fun saveResizedImage(context: Context, sourceUri: Uri, maxDimension: Int = 1800): String? {
-        try {
+        return try {
             val inputStream = context.contentResolver.openInputStream(sourceUri) ?: return null
             val bitmap = BitmapFactory.decodeStream(inputStream)
             inputStream.close()
 
             if (bitmap == null) return null
 
-            return saveBitmapToInternalStorage(context, bitmap, maxDimension)
+            saveBitmapToInternalStorage(context, bitmap, maxDimension)
         } catch (_: Exception) {
-            return null
+            null
         }
     }
 
     fun saveBitmapToInternalStorage(context: Context, bitmap: Bitmap, maxDimension: Int = 1800): String? {
-        try {
+        return try {
             val width = bitmap.width
             val height = bitmap.height
 
-            val scale = if (width > maxDimension || height > maxDimension) {
+            val scale = if ((width > maxDimension) || (height > maxDimension)) {
                 maxDimension.toFloat() / maxOf(width, height)
             } else {
                 1f
@@ -37,7 +38,7 @@ object ImageUtils {
             val newHeight = (height * scale).toInt()
 
             val resizedBitmap = if (scale < 1f) {
-                Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
+                bitmap.scale(newWidth, newHeight, true)
             } else {
                 bitmap
             }
@@ -48,9 +49,9 @@ object ImageUtils {
             outputStream.flush()
             outputStream.close()
 
-            return file.absolutePath
+            file.absolutePath
         } catch (_: Exception) {
-            return null
+            null
         }
     }
 }

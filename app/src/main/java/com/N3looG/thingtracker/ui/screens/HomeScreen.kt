@@ -25,6 +25,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Search
@@ -41,6 +42,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -135,9 +137,15 @@ fun HomeScreen(
         }
     }
 
-    // Intercept Back Press for Exit Confirmation
+    // Intercept Back Press: If filtering urgent, clear filter; if on History/Settings, return to Home tab; if on Home, show Exit Confirmation
     BackHandler {
-        showExitDialog = true
+        if (filterUrgentOnly) {
+            filterUrgentOnly = false
+        } else if (selectedNavItem != 0) {
+            selectedNavItem = 0
+        } else {
+            showExitDialog = true
+        }
     }
 
     // Exit Confirmation Dialog
@@ -276,19 +284,26 @@ fun HomeScreen(
             )
         },
         floatingActionButton = {
-            if (selectedNavItem == 0) {
-                FloatingActionButton(
+            if (selectedNavItem == 0 && !filterUrgentOnly && currentLoans.isNotEmpty()) {
+                ExtendedFloatingActionButton(
                     onClick = { onNavigateToAdd(selectedTab) },
                     containerColor = TechPrimary,
                     contentColor = Color.White,
-                    shape = CircleShape,
-                    modifier = Modifier.padding(bottom = 48.dp),
-                    elevation = FloatingActionButtonDefaults.elevation(10.dp)
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.padding(bottom = 12.dp, end = 16.dp),
+                    elevation = FloatingActionButtonDefaults.elevation(8.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Add,
-                        contentDescription = stringResource(id = R.string.action_add),
-                        modifier = Modifier.size(30.dp)
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(id = R.string.action_add),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 15.sp,
+                        color = Color.White
                     )
                 }
             }
@@ -501,18 +516,11 @@ fun HomeScreen(
                         }
 
                         if (currentLoans.isEmpty()) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .weight(1f),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = stringResource(id = R.string.empty_list),
-                                    color = TechTextSecondary,
-                                    fontSize = 17.sp
-                                )
-                            }
+                            EmptyStateView(
+                                modifier = Modifier.fillMaxWidth(),
+                                showAddButtonInside = !filterUrgentOnly,
+                                onAddClick = { onNavigateToAdd(selectedTab) }
+                            )
                         } else {
                             LazyColumn(
                                 modifier = Modifier
@@ -872,6 +880,81 @@ fun UserManualDialog(
         titleContentColor = TechTextPrimary,
         textContentColor = TechTextPrimary
     )
+}
+
+@Composable
+fun EmptyStateView(
+    modifier: Modifier = Modifier,
+    title: String = stringResource(id = R.string.empty_list),
+    showAddButtonInside: Boolean = false,
+    onAddClick: () -> Unit = {}
+) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 12.dp, horizontal = 8.dp),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = TechSurfaceCard),
+        border = BorderStroke(1.2.dp, TechBorder)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Surface(
+                shape = CircleShape,
+                color = TechSurface,
+                border = BorderStroke(1.5.dp, TechSecondary.copy(alpha = 0.5f)),
+                modifier = Modifier.size(54.dp)
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = Icons.Default.Inventory2,
+                        contentDescription = null,
+                        tint = TechSecondary,
+                        modifier = Modifier.size(26.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = title,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = TechTextPrimary,
+                textAlign = TextAlign.Center
+            )
+
+            if (showAddButtonInside) {
+                Spacer(modifier = Modifier.height(14.dp))
+                Button(
+                    onClick = onAddClick,
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = TechPrimary),
+                    contentPadding = PaddingValues(horizontal = 18.dp, vertical = 10.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = null,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = stringResource(id = R.string.action_add),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 15.sp,
+                        color = Color.White,
+                        maxLines = 1
+                    )
+                }
+            }
+        }
+    }
 }
 
 @Composable

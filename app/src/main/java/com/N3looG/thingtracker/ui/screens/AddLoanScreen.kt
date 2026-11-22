@@ -2,6 +2,7 @@ package com.N3looG.thingtracker.ui.screens
 
 import android.Manifest
 import android.content.pm.PackageManager
+import androidx.activity.compose.BackHandler
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -9,6 +10,7 @@ import android.provider.ContactsContract
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,6 +25,7 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -63,6 +66,10 @@ fun AddLoanScreen(
     var showPhotoSourceDialog by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
+
+    BackHandler {
+        onNavigateBack()
+    }
 
     // Camera launcher (takes new photo directly with system camera)
     val cameraLauncher = rememberLauncherForActivityResult(
@@ -180,57 +187,132 @@ fun AddLoanScreen(
         }
     }
 
-    // Photo Source Selection Dialog (Camera vs Gallery)
+    // Photo Source Selection Dialog (Camera vs Gallery - Redesigned)
     if (showPhotoSourceDialog) {
         AlertDialog(
             onDismissRequest = { showPhotoSourceDialog = false },
             title = {
-                Text(
-                    text = stringResource(id = R.string.dialog_photo_source_title),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.CameraAlt,
+                        contentDescription = null,
+                        tint = TechSecondary,
+                        modifier = Modifier.size(26.dp)
+                    )
+                    Text(
+                        text = stringResource(id = R.string.dialog_photo_source_title),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = TechTextPrimary
+                    )
+                }
             },
             text = {
                 Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    TextButton(
-                        onClick = {
-                            showPhotoSourceDialog = false
-                            cameraLauncher.launch(null)
-                        },
-                        modifier = Modifier.fillMaxWidth()
+                    // Option 1: Camera Card
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                showPhotoSourceDialog = false
+                                cameraLauncher.launch(null)
+                            },
+                        shape = RoundedCornerShape(14.dp),
+                        colors = CardDefaults.cardColors(containerColor = TechSurface),
+                        border = BorderStroke(1.5.dp, TechPrimary.copy(alpha = 0.6f)),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                     ) {
-                        Text(
-                            text = stringResource(id = R.string.btn_take_photo),
-                            fontSize = 16.sp,
-                            color = TechPrimary,
-                            fontWeight = FontWeight.SemiBold
-                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            Surface(
+                                shape = CircleShape,
+                                color = TechPrimary.copy(alpha = 0.15f),
+                                modifier = Modifier.size(40.dp)
+                            ) {
+                                Box(contentAlignment = Alignment.Center) {
+                                    Icon(
+                                        imageVector = Icons.Default.CameraAlt,
+                                        contentDescription = null,
+                                        tint = TechPrimary,
+                                        modifier = Modifier.size(22.dp)
+                                    )
+                                }
+                            }
+                            Text(
+                                text = stringResource(id = R.string.btn_take_photo),
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = TechTextPrimary
+                            )
+                        }
                     }
 
-                    TextButton(
-                        onClick = {
-                            showPhotoSourceDialog = false
-                            galleryLauncher.launch("image/*")
-                        },
-                        modifier = Modifier.fillMaxWidth()
+                    // Option 2: Gallery Card
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                showPhotoSourceDialog = false
+                                galleryLauncher.launch("image/*")
+                            },
+                        shape = RoundedCornerShape(14.dp),
+                        colors = CardDefaults.cardColors(containerColor = TechSurface),
+                        border = BorderStroke(1.5.dp, TechSecondary.copy(alpha = 0.6f)),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                     ) {
-                        Text(
-                            text = stringResource(id = R.string.btn_pick_gallery),
-                            fontSize = 16.sp,
-                            color = TechSecondary,
-                            fontWeight = FontWeight.SemiBold
-                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            Surface(
+                                shape = CircleShape,
+                                color = TechSecondary.copy(alpha = 0.15f),
+                                modifier = Modifier.size(40.dp)
+                            ) {
+                                Box(contentAlignment = Alignment.Center) {
+                                    Icon(
+                                        imageVector = Icons.Default.Image,
+                                        contentDescription = null,
+                                        tint = TechSecondary,
+                                        modifier = Modifier.size(22.dp)
+                                    )
+                                }
+                            }
+                            Text(
+                                text = stringResource(id = R.string.btn_pick_gallery),
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = TechTextPrimary
+                            )
+                        }
                     }
                 }
             },
             confirmButton = {},
             dismissButton = {
                 TextButton(onClick = { showPhotoSourceDialog = false }) {
-                    Text(stringResource(id = R.string.btn_cancel), color = TechTextSecondary, fontSize = 16.sp)
+                    Text(
+                        text = stringResource(id = R.string.btn_cancel),
+                        color = TechTextSecondary,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
                 }
             },
             containerColor = TechSurfaceCard,

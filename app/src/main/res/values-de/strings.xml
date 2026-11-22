@@ -10,11 +10,12 @@
     <string name="label_person_borrowed">Von wem haben Sie es geliehen?</string>
     <string name="label_due_date">Rückgabedatum</string>
     <string name="btn_mark_returned">Als zurückgegeben markieren</string>
-    <string name="dashboard_title">Übersicht</string>
+    <string name="dashboard_title">Acasă</string>
     <string name="stat_lent">Verliehen (Aktiv)</string>
     <string name="stat_borrowed">Geliehen (Aktiv)</string>
     <string name="stat_overdue">Überfällig</string>
     <string name="empty_list">Keine Artikel in dieser Liste gefunden.</string>
+    <string name="empty_subtitle">Tippen Sie unten rechts auf die grüne „+“-Schaltfläche im Kasten, um Ihren ersten Artikel hinzuzufügen.</string>
     <string name="screen_add_title">Neuen Artikel hinzufügen</string>
     <string name="label_category">Kategorie</string>
     <string name="label_notes">Notizen / Details (Optional)</string>
@@ -67,5 +68,5 @@
     <string name="privacy_body">ThingTracker von N3looG.\n\n1. Nutzung: Kostenlos bereitgestellt ohne Gewährleistung.\n\n2. 100%% Lokale Speicherung: Alle Daten werden ausschließlich lokal auf Ihrem Gerät gespeichert (Room DB). Bei Deinstallation gehen Daten verloren.\n\n3. Datenschutz &amp; AdMob: Keine Erfassung persönlicher Daten. Integriert Google AdMob für Werbung.\n\n4. Berechtigungen: Benachrichtigungen dienen nur lokalen Erinnerungen.\n\n5. Geistiges Eigentum: Design und Marke gehören N3looG.</string>
     <string name="manual_title">Benutzerhandbuch</string>
     <string name="manual_body">Willkommen bei ThingTracker!\n\n1. Artikel hinzufügen:\nTippen Sie auf die grüne „+“-Schaltfläche unten rechts. Wählen Sie aus, ob Sie den Artikel verliehen oder geliehen haben, geben Sie den Namen ein und legen Sie ein Rückgabedatum fest.\n\n2. Suchen &amp; Filtern:\nVerwenden Sie die Suchleiste oben, um sofort Artikel oder Personen zu finden.\n\n3. Schnellanruf:\nTippen Sie auf das Telefonsymbol auf einer Karte, um die Person sofort anzurufen.\n\n4. Zurückgeben &amp; Löschen:\nTippen Sie auf das grüne Häkchen, um einen Artikel als zurückgegeben zu markieren.\n\n5. Einstellungen &amp; Sprache:\nVerwenden Sie die Symbole in der oberen Leiste, um die Sprache zu ändern.</string>
-    <string name="placeholder_search">Artikel oder Person suchen...</string>
+    <string name="placeholder_search">Artikel oder Person suchen&#8230;</string>
 </resources>

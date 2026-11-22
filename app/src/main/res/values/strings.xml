@@ -10,11 +10,12 @@
     <string name="label_person_borrowed">Who did you borrow it from?</string>
     <string name="label_due_date">Return Due Date</string>
     <string name="btn_mark_returned">Mark as Returned</string>
-    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_title">Home</string>
     <string name="stat_lent">Active Lent</string>
     <string name="stat_borrowed">Active Borrowed</string>
     <string name="stat_overdue">Overdue</string>
     <string name="empty_list">No items found in this list.</string>
+    <string name="empty_subtitle">Tap the green \'+\' button in the bottom right of the box to add your first item.</string>
     <string name="screen_add_title">Add New Item</string>
     <string name="label_category">Category</string>
     <string name="label_notes">Notes / Details (Optional)</string>
